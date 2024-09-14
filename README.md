@@ -29,6 +29,7 @@ The project dependencies listed in `requirements.txt` are as follows:
 Flask==3.0.3
 numpy==2.1.1
 pandas==2.2.2
+pytest==8.3.3
 ```
 
 ## Project Directory Structure
@@ -39,11 +40,9 @@ The structure of the project is as follows:
     - LICENSE
     - requirements.txt
     - READMEtmp.md
-    - Dockerfile
-    - Makefile
     - README.md
-    - readme_gnr.py
     - app.py
+    - test_app.py
     - images/
         - storeManagement.png
         - accounting.png
@@ -66,7 +65,9 @@ The structure of the project is as follows:
         - provincial_channel_center.html
     - ODPSmocker/
         - dataMocker.py
+        - readme_gnr.py
     - data/
+        - product_data.csv
         - store_data.csv
         - transaction_data.csv
 ```
