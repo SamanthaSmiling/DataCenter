@@ -33,16 +33,28 @@ jobs:
       run: | 
         python app.py
 
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10]
 
-stages:
-  - test
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
 
-test_flask:
-  stage: test
-  image: python:3.12
-  before_script:
-    - pip install -r requirements.txt
-    - pip install pytest
-  script:
-    - pytest
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          pytest
+
 
