@@ -62,7 +62,7 @@ def generate_product_data(num_products=5000):
 
     # # Save the DataFrame to the /data/ directory
     # store_df.to_csv('data/store_data.csv', index=False)
-    product_df.to_csv('data/store_data.csv', index=False)
+    product_df.to_csv('data/product_data.csv', index=False)
     print("Product Table data generated!")
 
 
