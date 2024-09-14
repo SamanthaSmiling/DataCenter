@@ -17,6 +17,20 @@ jobs:
 
     steps:
 
+      - name: Show current directory and files
+        run: ls -al
+
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Show the current directory
+        run: pwd
+
+      - name: List all files in the directory
+        run: ls -al
+
+      - name: List all files recursively
+        run: ls -R
 
       - name: Install dependencies
         run: |
