@@ -9,15 +9,15 @@ __DISCLAIMER__
 - Any resemblance to real-world data is purely coincidental.
 
 Data Center Development
-![alt text](images/image-5.png)
+![alt text](images/Home.png)
 - Business Data Foundation: Establishing core data infrastructure for an independent business, supporting essential operational metrics.
 - Product Center: Centralized product data management, including inventory, sales, and product performance.
-![alt text](images/image-6.png)
+![alt text](images/productCenter.png)
 - Channel Center: Tracking sales and distribution across multiple channels, with real-time insights into channel performance.
 - Store Management: Managing store operations data, including sales performance, health scores, and loan management.
-![alt text](images/image-7.png)
+![alt text](images/storeManagement.png)
 - Accounting Management: Comprehensive financial tracking, including transaction amounts, purchase costs, revenue, and other financial metrics for profitability analysis.
-![alt text](images/image-8.png)
+![alt text](images/accounting.png)
 
 
 
