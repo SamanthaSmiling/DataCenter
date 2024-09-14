@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Center Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 炫彩文字样式 */
+        .rainbow-text {
+            font-family: 'Poppins', sans-serif;  /* 加粗字体 */
+            font-weight: 700;  /* 加粗 */
+            font-size: 2.5rem;  /* 字体大小 */
+            background: linear-gradient(45deg, #ff6ec4, #7873f5, #43e97b, #f8ffae);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+            animation: gradient-animation 4s ease infinite;  /* 炫彩动画 */
+        }
+
+        /* 动态渐变效果 */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+    <style>
+        /* 固定页面宽度为 1980px 并居中 */
+        .container-fluid {
+            max-width: 1980px;
+            margin: 0 auto;  /* 页面居中 */
+            padding-left: 50px;  /* 页面左右的留白 */
+            padding-right: 50px; /* 页面左右的留白 */
+        }
+
+        /* 导航项之间的分隔符样式 */
+        .nav-separator {
+            color: #888;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        /* 当前选中页面的效果 */
+        .nav-item.active .nav-link {
+            font-weight: bold;
+            color: #007BFF !important;
+        }
+
+        /* 悬停时的效果 */
+        .nav-item .nav-link:hover {
+            color: #0056b3;
+        }
+
+        /* 允许导航栏折行 */
+        .navbar-nav {
+            flex-wrap: wrap;  /* 允许导航栏的元素换行 */
+            justify-content: flex-start;  /* 保持导航项左对齐 */
+        }
+
+        /* 导航栏整体间距调整，防止过于拥挤 */
+        .navbar-nav .nav-item {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        /* 每个图表的区域留出足够的Margin和Padding */
+        .chart-container {
+            margin-bottom: 40px;  /* 下边距 */
+            padding: 20px;  /* 内边距，避免图表紧贴边界 */
+            border-radius: 8px;  /* 给图表容器加一点圆角 */
+            background-color: #f8f9fa;  /* 为每个图表容器加上浅灰色背景 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 轻微的阴影效果 */
+        }
+
+    </style>
+    <style>
+        /* 调整饼图和条形图的大小，使它们与同一行保持一致 */
+        .chart-canvas {
+            max-height: 400px;  /* 设置最大高度为400px，确保高度一致 */
+            max-width: 100%;  /* 宽度填满父容器 */
+        }
+    
+        /* 每个图表的区域留出足够的Margin和Padding */
+        .chart-container {
+            margin-bottom: 40px;  /* 下边距 */
+            padding: 20px;  /* 内边距，避免图表紧贴边界 */
+            border-radius: 8px;  /* 给图表容器加一点圆角 */
+            background-color: #f8f9fa;  /* 为每个图表容器加上浅灰色背景 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 轻微的阴影效果 */
+        }
+    
+        /* 页面宽度固定为1980px，并留有左右margin */
+        .container-fluid {
+            max-width: 1980px;
+            margin: 0 auto;  /* 页面居中 */
+            padding-left: 50px;  /* 页面左右的留白 */
+            padding-right: 50px; /* 页面左右的留白 */
+        }
+    </style>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- 应用炫彩字体 -->
+        <a class="navbar-brand rainbow-text" href="#">Data Center Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+             <!-- 首页 -->
+             <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 商品中心 -->
+            <li class="nav-item {% if request.path == '/product-center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('product_center') }}">Product Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 省域渠道中心 -->
+            <li class="nav-item {% if request.path == '/provincial-channel-center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('provincial_channel_center') }}">Provincial Channel Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 门店管理 -->
+            <li class="nav-item {% if request.path == '/store-management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('store_management') }}">Store Management</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 大促管理 -->
+            <li class="nav-item {% if request.path == '/promotion_management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('promotion_management') }}">Promotion Management</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 贷款中心 -->
+            <li class="nav-item {% if request.path == '/loan-center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('loan_center') }}">Loan Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 核算中心 -->
+            <li class="nav-item {% if request.path == '/accounting_center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('accounting_center') }}">Accounting Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 供应链管理 -->
+            <li class="nav-item {% if request.path == '/supply_chain_management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('supply_chain_management') }}">Supply Chain Management</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 数据权限管理 -->
+            <li class="nav-item {% if request.path == '/data_permission_management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('data_permission_management') }}">Data Permission Management</a>
+            </li>
+
+        <!-- 添加分隔符 -->
+        <li class="nav-item">
+            <span class="nav-separator">|</span>
+        </li>
+
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container-fluid">
+        <!-- 第一行 -->
+        <div class="row">
+            <!-- 实时销售进度 -->
+            <div class="col-md-6 chart-container">
+                <h4>Real-time Sales Progress</h4>
+                <canvas id="salesProgressChart"></canvas>
+            </div>
+
+            <!-- 省销量前 10 名 -->
+            <div class="col-md-6 chart-container">
+                <h4>Top 10 Provincial Sales</h4>
+                <canvas id="provincialSalesChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 第二行 -->
+        <div class="row">
+            <!-- Transaction Category Structure -->
+            <div class="col-md-6 chart-container">
+                <h4>Transaction Category Structure</h4>
+                <canvas id="categoryChart" class="chart-canvas"></canvas> <!-- 添加类 chart-canvas 来控制大小 -->
+            </div>
+        
+            <!-- Progress Gap Diagnosis -->
+            <div class="col-md-6 chart-container">
+                <h4>Progress Gap Diagnosis</h4>
+                <canvas id="progressGapChart" class="chart-canvas"></canvas> <!-- 同样控制大小 -->
+            </div>
+        </div>
+        
+        <!-- 第三行 -->
+        <div class="row">
+
+            <!-- 在仓商品的销售进度 -->
+            <div class="col-md-4 chart-container">
+                <h4>Stock Sales Progress (65%)</h4>
+                <canvas id="stockSalesChart"></canvas>
+            </div>
+            <!-- 贷款额度池 -->
+            <div class="col-md-4 chart-container">
+                <h4>Loan Pool Consumption (35%)</h4>
+                <canvas id="loanPoolChart"></canvas>
+            </div>
+
+            <!-- 系统负荷指数 -->
+            <div class="col-md-4 chart-container">
+                <h4>System Load (50%)</h4>
+                <canvas id="systemLoadChart"></canvas>
+            </div>
+
+        </div>
+
+        <!-- 第四行：表格 -->
+        <div class="row">
+            <!-- 低库存报警 -->
+            <div class="col-md-6 chart-container">
+                <h4>Low Stock Alert</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Current Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lowStockTable"></tbody>
+                </table>
+            </div>
+
+            <!-- 异常门店 -->
+            <div class="col-md-6 chart-container">
+                <h4>Abnormal Sales Stores</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Store ID</th>
+                            <th>Health Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="abnormalSalesTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 charts.js 文件 -->
+    <script src="{{ url_for('static', filename='charts.js') }}"></script>
+
+
+
+</body>
+</html>

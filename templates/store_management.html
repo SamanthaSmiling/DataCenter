@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Store Management{% endblock %}
+
+{% block content %}
+<!-- <div class="page-title">Store Management</div> -->
+
+<!-- 第一行：两个图表 -->
+<div class="row">
+    <div class="col-md-6 chart-container">
+        <h4>Store Tier Distribution</h4>
+        <canvas id="storeTierDistributionChart" class="chart-canvas"></canvas>
+    </div>
+    <div class="col-md-6 chart-container">
+        <h4>Store Health Scores by City</h4>
+        <canvas id="cityHealthScoresChart" class="chart-canvas"></canvas>
+    </div>
+</div>
+
+<!-- 第二行：宽表 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Store Details</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Store ID</th>
+                    <th>Transaction Amount</th>
+                    <th>Health Score</th>
+                    <th>Store Tier</th>
+                    <th>Province</th>
+                    <th>City</th>
+                    <th>Store Owner ID</th>
+                    <th>Loan Status</th>
+                </tr>
+            </thead>
+            <tbody id="storeTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

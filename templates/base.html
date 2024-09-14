@@ -1,0 +1,124 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title class="rainbow-text">Data Center Dashboard</title>
+        <!-- <title>{% block title %}Dashboard{% endblock %}</title> -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            /* 炫彩文字样式 */
+            .rainbow-text {
+                font-family: 'Poppins', sans-serif;  /* 加粗字体 */
+                font-weight: 700;  /* 加粗 */
+                font-size: 2.5rem;  /* 字体大小 */
+                background: linear-gradient(45deg, #ff6ec4, #7873f5, #43e97b, #f8ffae);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: gradient-animation 4s ease infinite;  /* 炫彩动画 */
+            }
+    
+            /* 动态渐变效果 */
+            @keyframes gradient-animation {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+        </style>
+        <style>
+            /* 固定页面宽度为 1980px 并居中 */
+            .container-fluid {
+                max-width: 1980px;
+                margin: 0 auto;  /* 页面居中 */
+                padding-left: 50px;  /* 页面左右的留白 */
+                padding-right: 50px; /* 页面左右的留白 */
+            }
+    
+            /* 导航项之间的分隔符样式 */
+            .nav-separator {
+                color: #888;
+                font-size: 24px;
+                margin: 0 10px;
+            }
+    
+            /* 当前选中页面的效果 */
+            .nav-item.active .nav-link {
+                font-weight: bold;
+                color: #007BFF !important;
+            }
+    
+            /* 悬停时的效果 */
+            .nav-item .nav-link:hover {
+                color: #0056b3;
+            }
+    
+            /* 允许导航栏折行 */
+            .navbar-nav {
+                flex-wrap: wrap;  /* 允许导航栏的元素换行 */
+                justify-content: flex-start;  /* 保持导航项左对齐 */
+            }
+    
+            /* 导航栏整体间距调整，防止过于拥挤 */
+            .navbar-nav .nav-item {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            /* 每个图表的区域留出足够的Margin和Padding */
+            .chart-container {
+                margin-bottom: 40px;  /* 下边距 */
+                padding: 20px;  /* 内边距，避免图表紧贴边界 */
+                border-radius: 8px;  /* 给图表容器加一点圆角 */
+                background-color: #f8f9fa;  /* 为每个图表容器加上浅灰色背景 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 轻微的阴影效果 */
+            }
+    
+        </style>
+        <style>
+            /* 调整饼图和条形图的大小，使它们与同一行保持一致 */
+            .chart-canvas {
+                max-height: 400px;  /* 设置最大高度为400px，确保高度一致 */
+                max-width: 100%;  /* 宽度填满父容器 */
+            }
+        
+            /* 每个图表的区域留出足够的Margin和Padding */
+            .chart-container {
+                margin-bottom: 40px;  /* 下边距 */
+                padding: 20px;  /* 内边距，避免图表紧贴边界 */
+                border-radius: 8px;  /* 给图表容器加一点圆角 */
+                background-color: #f8f9fa;  /* 为每个图表容器加上浅灰色背景 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* 轻微的阴影效果 */
+            }
+        
+            /* 页面宽度固定为1980px，并留有左右margin */
+            .container-fluid {
+                max-width: 1980px;
+                margin: 0 auto;  /* 页面居中 */
+                padding-left: 50px;  /* 页面左右的留白 */
+                padding-right: 50px; /* 页面左右的留白 */
+            }
+        </style>
+        
+    </head>
+<body>
+        <!-- 炫彩的标题 -->
+        <!-- <div class="rainbow-text">Data Center Dashboard</div> -->
+    {% include 'navbar.html' %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+       <!-- 引入 charts.js 文件 -->
+       <script src="{{ url_for('static', filename='charts.js') }}"></script>
+
+</body>
+</html>

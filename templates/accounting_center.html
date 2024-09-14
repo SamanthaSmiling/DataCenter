@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Product Center{% endblock %}
+
+{% block content %}
+<!-- <div class="page-title">Accounting Center</div> -->
+
+<!-- 门店明细表 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Store Details</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Store ID</th>
+                    <th>Transaction Amount</th>
+                    <th>Total Purchase Cost</th>
+                    <th>Total Sales Revenue</th>
+                    <th>Promotion Cost</th>
+                    <th>Logistics Cost</th>
+                    <th>Inventory Depreciation</th>
+                    <th>EBITA</th>
+                    <th>EBITA Rate</th>
+                </tr>
+            </thead>
+            <tbody id="storeDetailsTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 省域明细表 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Provincial Details</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Province</th>
+                    <th>Transaction Amount</th>
+                    <th>Total Purchase Cost</th>
+                    <th>Total Sales Revenue</th>
+                    <th>Promotion Cost</th>
+                    <th>Logistics Cost</th>
+                    <th>Inventory Depreciation</th>
+                    <th>EBITA</th>
+                    <th>EBITA Rate</th>
+                </tr>
+            </thead>
+            <tbody id="provincialDetailsTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 类目明细表 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Category Details</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Transaction Amount</th>
+                    <th>Total Purchase Cost</th>
+                    <th>Total Sales Revenue</th>
+                    <th>Promotion Cost</th>
+                    <th>Logistics Cost</th>
+                    <th>Inventory Depreciation</th>
+                    <th>EBITA</th>
+                    <th>EBITA Rate</th>
+                </tr>
+            </thead>
+            <tbody id="categoryDetailsTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

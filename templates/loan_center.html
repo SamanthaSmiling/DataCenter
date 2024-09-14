@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Loan Center{% endblock %}
+
+{% block content %}
+<!-- <div class="page-title">Loan Center</div> -->
+
+<!-- 第一行：两个图表 -->
+<div class="row">
+    <div class="col-md-6 chart-container">
+        <h4>Sales Distribution by Loan Status</h4>
+        <canvas id="loanSalesDistributionChart" class="chart-canvas"></canvas>
+    </div>
+    <div class="col-md-6 chart-container">
+        <h4>Loan Repayment Rate</h4>
+        <canvas id="loanRepaymentRateChart" class="chart-canvas"></canvas>
+    </div>
+</div>
+
+<!-- 第二行：宽表 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Store Loan Details</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Store ID</th>
+                    <th>City</th>
+                    <th>Province</th>
+                    <th>Transaction Amount</th>
+                    <th>Loan Status</th>
+                    <th>Repayment Status</th>
+                </tr>
+            </thead>
+            <tbody id="loanStoreTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!-- templates/product_center.html -->
+{% extends "base.html" %}
+
+{% block title %}Product Center{% endblock %}
+
+{% block content %}
+<!-- <div class="page-title">Product Center</div> -->
+
+<!-- 第一行：两个图表 -->
+<div class="row">
+    <div class="col-md-6 chart-container">
+        <h4>Product Structure Distribution</h4>
+        <canvas id="productStructureChart" class="chart-canvas"></canvas>
+    </div>
+    <div class="col-md-6 chart-container">
+        <h4>30-Day Transaction Trends by Category</h4>
+        <canvas id="categoryTrendsChart" class="chart-canvas"></canvas>
+    </div>
+</div>
+
+<!-- 第二行：宽表 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Product Aggregation Table</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Current Stock</th>
+                    <th>30-Day Sales</th>
+                    <th>90-Day Sales</th>
+                    <th>Hot Product</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

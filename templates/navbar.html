@@ -1,0 +1,85 @@
+<!-- templates/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="rainbow-text" href="{{ url_for('dashboard') }}">Data Center Dashboard</a>
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+             <!-- 首页 -->
+            <li class="nav-item {% if request.path == '/dashboard' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('dashboard') }}">Home</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 商品中心 -->
+            <li class="nav-item {% if request.path == '/product-center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('product_center') }}">Product Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 省域渠道中心 -->
+            <li class="nav-item {% if request.path == '/provincial-channel-center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('provincial_channel_center') }}">Provincial Channel Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 门店管理 -->
+            <li class="nav-item {% if request.path == '/store-management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('store_management') }}">Store Management</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 大促管理 -->
+            <li class="nav-item {% if request.path == '/promotion_management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('promotion_management') }}">Promotion Management</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 贷款中心 -->
+            <li class="nav-item {% if request.path == '/loan-center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('loan_center') }}">Loan Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 核算中心 -->
+            <li class="nav-item {% if request.path == '/accounting_center' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('accounting_center') }}">Accounting Center</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 供应链管理 -->
+            <li class="nav-item {% if request.path == '/supply_chain_management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('supply_chain_management') }}">Supply Chain Management</a>
+            </li>
+            <!-- 添加分隔符 -->
+            <li class="nav-item">
+                <span class="nav-separator">|</span>
+            </li>
+            <!-- 数据权限管理 -->
+            <li class="nav-item {% if request.path == '/data_permission_management' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('data_permission_management') }}">Data Permission Management</a>
+            </li>
+
+        <!-- 添加分隔符 -->
+        <li class="nav-item">
+            <span class="nav-separator">|</span>
+        </li>
+       </ul>
+    </div>
+</nav>

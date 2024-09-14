@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Data Permission Management{% endblock %}
+
+{% block content %}
+<!-- <div class="page-title">Data Permission Management</div> -->
+
+<!-- 权限申请记录表格 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Permission Requests</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Initiator</th>
+                    <th>Role</th>
+                    <th>Permission</th>
+                    <th>Approval Conclusion</th>
+                    <th>Initiation Time</th>
+                    <th>Approval Time</th>
+                </tr>
+            </thead>
+            <tbody id="permissionRequestsTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // 动态填充权限申请记录表格
+    fetch('/api/permission-requests')
+        .then(response => response.json())
+        .then(data => {
+            let tableBody = document.getElementById('permissionRequestsTableBody');
+            data.forEach(item => {
+                let row = `<tr>
+                    <td>${item.initiator}</td>
+                    <td>${item.role}</td>
+                    <td>${item.permission}</td>
+                    <td>${item.approval}</td>
+                    <td>${item.initiation_time}</td>
+                    <td>${item.approval_time}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+{% endblock %}

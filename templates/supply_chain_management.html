@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Supply Chain Management{% endblock %}
+
+{% block content %}
+<!-- <div class="page-title">Supply Chain Management</div> -->
+
+<!-- 分类库存余量 -->
+<div class="row">
+    <div class="col-6">
+        <h4>Category Stock Remaining</h4>
+        <canvas id="categoryStockChart"></canvas>
+    </div>
+
+    <!-- 省份配送进度 -->
+    <div class="col-6">
+        <h4>Province Delivery Progress</h4>
+        <canvas id="provinceDeliveryProgressChart"></canvas>
+
+    </div>
+</div>
+
+<!-- 商品清单 -->
+<div class="row">
+    <div class="col-12 wide-table-container">
+        <h4>Product List</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Stock Remaining</th>
+                    <th>Average Storage Price</th>
+                    <th>30-Day Sales</th>
+                    <th>Brand</th>
+                </tr>
+            </thead>
+            <tbody id="categoryDetailsTableBody">
+                <!-- 数据通过 JavaScript 动态填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // 动态填充商品清单表格
+    fetch('/api/category-details')
+        .then(response => response.json())
+        .then(data => {
+            let tableBody = document.getElementById('categoryDetailsTableBody');
+            data.forEach(item => {
+                let row = `<tr>
+                    <td>${item.product_id}</td>
+                    <td>${item.stock_remaining}</td>
+                    <td>${item.avg_storage_price}</td>
+                    <td>${item['30_day_sales']}</td>
+                    <td>${item.brand}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        });
+</script>
+{% endblock %}
