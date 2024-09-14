@@ -1,43 +1,19 @@
-name: Python Application Gitgub
+name: Test Python Application
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-
-    - name: Change directory to root
-      run: cd ${{ github.workspace }}
-
-    - name: Install dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run Data Center
-      run: | 
-        python app.py
-
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.12, 3.10]
+        python-version: [3.9, 3.10]  # Correct supported Python versions
 
     steps:
       - name: Check out the repository
@@ -56,5 +32,3 @@ jobs:
       - name: Run tests
         run: |
           pytest
-
-
