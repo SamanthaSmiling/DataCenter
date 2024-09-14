@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.10]  # Correct supported Python versions
+        python-version: [3.12, 3.10]  # Correct supported Python versions
 
     steps:
       - name: Check out the repository
