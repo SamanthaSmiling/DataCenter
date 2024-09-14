@@ -6,6 +6,14 @@ def generate_requirements():
     Generate the requirements.txt using pipreqs.
     If pipreqs is not installed, install it.
     """
+    # Check if pipreqs is installed
+    try:
+        subprocess.run(['pipreqs', '--help'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except FileNotFoundError:
+        print("pipreqs not found. Installing pipreqs...")
+        subprocess.run(['pip', 'install', 'pipreqs'])
+
+    # Try generating requirements.txt using pipreqs
     try:
         subprocess.run(['pipreqs', '.', '--force'], check=True)
     except subprocess.CalledProcessError as e:
@@ -32,7 +40,7 @@ def generate_directory_structure(start_path='.'):
 
 def generate_readme():
     """
-    Generate README.txt with project dependencies and directory structure.
+    Generate READMEtmp.md with project dependencies and directory structure.
     """
     # Generate requirements.txt
     generate_requirements()
@@ -40,17 +48,18 @@ def generate_readme():
     # Read the generated requirements.txt file
     requirements_content = ""
     if os.path.exists('requirements.txt'):
-        with open('requirements.txt', 'r') as req_file:
+        with open('requirements.txt', 'r', encoding='utf-8') as req_file:
             requirements_content = req_file.read()
     
     # Get the project directory structure
     directory_structure = generate_directory_structure()
 
-    # Write to README.txt
-    with open('READMEtmp.md', 'w') as readme_file:
-        readme_file.write("Project Dependencies (requirements.txt):\n")
+    # Write to READMEtmp.md
+    with open('READMEtmp.md', 'w', encoding='utf-8') as readme_file:
+        readme_file.write("# Project Dependencies and Directory Structure\n\n")
+        readme_file.write("## Project Dependencies (requirements.txt):\n")
         readme_file.write(requirements_content)
-        readme_file.write("\n\nProject Directory Structure:\n")
+        readme_file.write("\n\n## Project Directory Structure:\n")
         readme_file.write(directory_structure)
 
 if __name__ == "__main__":

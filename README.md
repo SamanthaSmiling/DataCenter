@@ -20,22 +20,29 @@ Data Center Development
 ![alt text](images/accounting.png)
 
 
+# Project Dependencies and Directory Structure
 
-Project Dependencies (requirements.txt):
+## Project Dependencies (requirements.txt):
 Flask==3.0.3
 numpy==2.1.1
 pandas==2.2.2
 
 
-Project Directory Structure:
+## Project Directory Structure:
 ./
     LICENSE
     requirements.txt
+    READMEtmp.md
     Dockerfile
     Makefile
     README.md
     readme_gnr.py
     app.py
+    images/
+        storeManagement.png
+        accounting.png
+        Home.png
+        productCenter.png
     __pycache__/
     static/
         charts.js
