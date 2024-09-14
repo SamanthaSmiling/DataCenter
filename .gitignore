@@ -136,7 +136,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# workspace
+# workspacelea
 *-workspace
 readme_gnr.py
 READMEtmp.md
