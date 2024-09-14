@@ -138,4 +138,6 @@ dmypy.json
 .pyre/
 
 # workspace
-*.workspace
+*-workspace
+readme_gnr.py
+READMEtmp.md

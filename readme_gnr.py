@@ -47,7 +47,7 @@ def generate_readme():
     directory_structure = generate_directory_structure()
 
     # Write to README.txt
-    with open('README.md', 'w') as readme_file:
+    with open('READMEtmp.md', 'w') as readme_file:
         readme_file.write("Project Dependencies (requirements.txt):\n")
         readme_file.write(requirements_content)
         readme_file.write("\n\nProject Directory Structure:\n")
