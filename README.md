@@ -20,46 +20,53 @@ Data Center Development
 ![alt text](images/accounting.png)
 
 
-# Project Dependencies and Directory Structure
+# Project Overview
 
-## Project Dependencies (requirements.txt):
+## Project Dependencies
+The project dependencies listed in `requirements.txt` are as follows:
+
+```text
 Flask==3.0.3
 numpy==2.1.1
 pandas==2.2.2
+```
 
+## Project Directory Structure
+The structure of the project is as follows:
 
-## Project Directory Structure:
-./
-    LICENSE
-    requirements.txt
-    READMEtmp.md
-    Dockerfile
-    Makefile
-    README.md
-    readme_gnr.py
-    app.py
-    images/
-        storeManagement.png
-        accounting.png
-        Home.png
-        productCenter.png
-    __pycache__/
-    static/
-        charts.js
-    templates/
-        supply_chain_management.html
-        navbar.html
-        base.html
-        dashboard.html
-        accounting_center.html
-        data_permission_management.html
-        promotion_management.html
-        loan_center.html
-        product_center.html
-        store_management.html
-        provincial_channel_center.html
-    ODPSmocker/
-        dataMocker.py
-    data/
-        store_data.csv
-        transaction_data.csv
+```text
+- ./
+    - LICENSE
+    - requirements.txt
+    - READMEtmp.md
+    - Dockerfile
+    - Makefile
+    - README.md
+    - readme_gnr.py
+    - app.py
+    - images/
+        - storeManagement.png
+        - accounting.png
+        - Home.png
+        - productCenter.png
+    - __pycache__/
+    - static/
+        - charts.js
+    - templates/
+        - supply_chain_management.html
+        - navbar.html
+        - base.html
+        - dashboard.html
+        - accounting_center.html
+        - data_permission_management.html
+        - promotion_management.html
+        - loan_center.html
+        - product_center.html
+        - store_management.html
+        - provincial_channel_center.html
+    - ODPSmocker/
+        - dataMocker.py
+    - data/
+        - store_data.csv
+        - transaction_data.csv
+```

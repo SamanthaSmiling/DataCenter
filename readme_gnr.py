@@ -32,10 +32,10 @@ def generate_directory_structure(start_path='.'):
         
         level = root.replace(start_path, '').count(os.sep)
         indent = ' ' * 4 * level
-        structure += f"{indent}{os.path.basename(root)}/\n"
+        structure += f"{indent}- {os.path.basename(root)}/\n"
         sub_indent = ' ' * 4 * (level + 1)
         for f in files:
-            structure += f"{sub_indent}{f}\n"
+            structure += f"{sub_indent}- {f}\n"
     return structure
 
 def generate_readme():
@@ -56,11 +56,19 @@ def generate_readme():
 
     # Write to READMEtmp.md
     with open('READMEtmp.md', 'w', encoding='utf-8') as readme_file:
-        readme_file.write("# Project Dependencies and Directory Structure\n\n")
-        readme_file.write("## Project Dependencies (requirements.txt):\n")
+        readme_file.write("# Project Overview\n\n")
+        
+        readme_file.write("## Project Dependencies\n")
+        readme_file.write("The project dependencies listed in `requirements.txt` are as follows:\n\n")
+        readme_file.write("```text\n")
         readme_file.write(requirements_content)
-        readme_file.write("\n\n## Project Directory Structure:\n")
+        readme_file.write("```\n\n")
+        
+        readme_file.write("## Project Directory Structure\n")
+        readme_file.write("The structure of the project is as follows:\n\n")
+        readme_file.write("```text\n")
         readme_file.write(directory_structure)
+        readme_file.write("```\n")
 
 if __name__ == "__main__":
     generate_readme()
